@@ -1,0 +1,288 @@
+@import "_variables.scss";
+@import "_font.scss";
+@import "_mixin.scss";
+@import "_themeColors.scss";
+
+/*==========Common CSS ==========*/
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    overflow-x: hidden;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: $body_font;
+    color: $text_color;
+    background-color: $body_bg;
+    text-rendering: optimizeSpeed;
+}
+
+button,
+input,
+select,
+optgroup,
+textarea {
+    color: $text_color;
+    font-size: 16px;
+    line-height: 26px;
+}
+
+img {
+    max-width: 100%;
+}
+
+section {
+    position: relative;
+}
+.back_img {
+    @include back_img;
+    background-color: #e1e1e1;
+}
+
+.divider {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: rgba($black_color, 0.04);
+}
+
+.text_center {
+    text-align: center;
+}
+
+.container_fluid {
+    padding: 0 120px;
+}
+/*==========Common CSS End==========*/
+
+/*==========Typography CSS==========*/
+
+p {
+    @include font-size($p_font_sizes);
+
+    &:empty {
+        display: none;
+    }
+}
+
+.big_text {
+    @include font-size($big_p_font_size);
+}
+
+.small_text {
+    @include font-size($small_p_font_size);
+}
+
+a {
+    text-decoration: none !important;
+    outline: none !important;
+    color: $secondary_color;
+
+    &:hover {
+        color: initial;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 600;
+    font-family: $title_font;
+}
+
+.h1_title {
+    @include font-size($h1_font_sizes);
+    font-weight: bold;
+}
+
+.h2_title {
+    @include font-size($h2_font_sizes);
+    text-transform: capitalize;
+    margin-bottom: 60px;
+    position: relative;
+
+    span {
+        color: $primary_color;
+        font-weight: 400;
+    }
+}
+
+.h3_title {
+    @include font-size($h3_font_sizes);
+}
+
+.h4_title {
+    @include font-size($h4_font_sizes);
+}
+
+.h5_title {
+    font-size: 18px;
+    line-height: 28px;
+}
+
+ul,
+ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/*==========Typography CSS End==========*/
+
+/*==========Button CSS==========*/
+
+.sec_btn {
+    padding: 15px 54px;
+    line-height: 1.42857143;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $secondary_color;
+    color: $white_color;
+    position: relative;
+    border: none;
+    text-transform: capitalize;
+    font-size: 24px;
+    z-index: 2;
+    border-radius: 100vmax !important;
+    outline: none !important;
+    transition: $transition;
+
+    &:hover {
+        background-color: $primary_color;
+        color: $white_color;
+    }
+}
+
+.link_btn {
+    font-size: 24px;
+    text-decoration: underline !important;
+    transition: $transition;
+
+    &:hover {
+        color: $primary_color;
+    }
+}
+
+/*==========Button CSS End==========*/
+
+/*==========Winner Section CSS==========*/
+
+.winner_sec {
+    padding: 100px 0;
+}
+
+.swiper {
+    [class*="swiper-button-"] {
+        --size: 62px;
+        width: var(--size);
+        height: var(--size);
+        background-color: $white_color;
+        border-radius: 50%;
+        font-size: 0;
+        border: none;
+        color: $secondary_color;
+
+        &:after {
+            display: none;
+        }
+
+        &:before {
+            content: "";
+            background-image: url("data:image/svg+xml,%3Csvg width='26' height='26' viewBox='0 0 26 26' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_163_311)'%3E%3Cpath d='M6.22223 13.928L17.9143 25.6162C18.4273 26.128 19.2586 26.128 19.7729 25.6162C20.2859 25.1045 20.2859 24.2733 19.7729 23.7615L9.00822 13.0007L19.7716 2.23992C20.2846 1.72818 20.2846 0.896972 19.7716 0.383931C19.2586 -0.127814 18.4261 -0.127814 17.913 0.383931L6.22093 12.072C5.71577 12.5785 5.71577 13.4227 6.22223 13.928Z' fill='black'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_163_311'%3E%3Crect width='26' height='26' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A");
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-size: 100%;
+            width: 26px;
+            height: 26px;
+        }
+
+        &.swiper-button-next {
+            &:before {
+                transform: translate(-50%, -50%) scale(-1, 1);
+            }
+        }
+    }
+}
+
+.winner_list_box {
+    display: grid;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: $box_shadow;
+    grid-template-columns: 500px 1fr;
+    column-gap: 50px;
+    margin-bottom: 30px;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    .winner_box_left {
+        --radius: 20px;
+        border-radius: var(--radius);
+        overflow: hidden;
+
+        .winner_box_img {
+            width: 100%;
+            height: 370px;
+            border-radius: var(--radius);
+        }
+    }
+
+    .winner_box_right {
+        display: flex;
+        gap: 120px;
+
+        .winner_box_text {
+            margin-top: 45px;
+
+            .winner_won {
+                color: $primary_color;
+                font-weight: 500;
+                margin-bottom: 10px;
+                display: block;
+            }
+
+            .winner_box_title {
+                text-transform: capitalize;
+                margin-bottom: 12px;
+            }
+
+            .winner_box_subtitle {
+                margin-bottom: 22px;
+                font-weight: 500;
+            }
+
+            .winner_button_group {
+                display: flex;
+                align-items: center;
+                gap: 30px;
+                margin-top: 24px;
+            }
+        }
+
+        .winner_img {
+            --size: 145px;
+            min-width: var(--size);
+            height: var(--size);
+            border-radius: 50%;
+            border: 3px solid $primary_color;
+        }
+    }
+}
+/*==========Winner Section CSS End==========*/
